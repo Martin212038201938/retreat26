@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Summer Camp 2026</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+  <script src="config.js"></script>
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --sun: #F9A825;
+      --sun-light: #FFF3E0;
+      --turquoise: #00ACC1;
+      --turquoise-light: #E0F7FA;
+      --turquoise-dark: #00838F;
+      --sand: #FFF8E1;
+      --coral: #FF7043;
+      --white: #FFFFFF;
+      --text: #263238;
+      --text-light: #546E7A;
+      --border: #E0E0E0;
+      --success: #43A047;
+      --success-bg: #E8F5E9;
+      --error: #E53935;
+      --error-bg: #FFEBEE;
+      --radius: 12px;
+      --radius-sm: 8px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      background: linear-gradient(135deg, #00ACC1 0%, #0097A7 40%, #F9A825 100%);
+      color: var(--white);
+      padding: 3rem 1.5rem 2.5rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -40%;
+      right: -20%;
+      width: 60%;
+      height: 180%;
+      background: radial-gradient(ellipse, rgba(249,168,37,0.3) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-icon {
+      font-size: 3.5rem;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+
+    .hero h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2.5rem;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.25rem;
+      position: relative;
+    }
+
+    .hero .subtitle {
+      font-size: 1.15rem;
+      opacity: 0.9;
+      font-weight: 400;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-meta {
+      display: inline-flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-radius: var(--radius);
+      padding: 1rem 1.5rem;
+      font-size: 0.95rem;
+    }
+
+    .hero-meta span {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    /* ── Content Sections ── */
+    .container {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 0 1.25rem;
+    }
+
+    section {
+      padding: 2.5rem 0;
+    }
+
+    section + section {
+      border-top: 1px solid var(--border);
+    }
+
+    .section-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.5rem;
+      font-weight: 400;
+      margin-bottom: 1rem;
+      color: var(--text);
+    }
+
+    /* ── Info Cards ── */
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    .info-card {
+      background: var(--sand);
+      border-radius: var(--radius);
+      padding: 1.25rem;
+    }
+
+    .info-card.turquoise {
+      background: var(--turquoise-light);
+    }
+
+    .info-card h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .info-card p {
+      font-size: 0.9rem;
+      color: var(--text-light);
+      line-height: 1.5;
+    }
+
+    /* ── Placeholder Sections ── */
+    .placeholder-section {
+      background: var(--sand);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      border: 2px dashed var(--sun);
+      text-align: center;
+      color: var(--text-light);
+      font-size: 0.9rem;
+    }
+
+    .placeholder-section h3 {
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+
+    /* ── Form ── */
+    .form-section {
+      background: var(--turquoise-light);
+      padding: 2.5rem 0;
+      border-top: none;
+    }
+
+    .form-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+
+    .form-group {
+      margin-bottom: 1.25rem;
+    }
+
+    .form-group:last-child {
+      margin-bottom: 0;
+    }
+
+    label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+      color: var(--text);
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="number"],
+    select {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-sm);
+      font-family: inherit;
+      font-size: 1rem;
+      color: var(--text);
+      background: var(--white);
+      transition: border-color 0.2s;
+      -webkit-appearance: none;
+    }
+
+    input:focus,
+    select:focus {
+      outline: none;
+      border-color: var(--turquoise);
+      box-shadow: 0 0 0 3px rgba(0,172,193,0.15);
+    }
+
+    input[type="number"] {
+      max-width: 100px;
+    }
+
+    /* ── Radio/Toggle ── */
+    .status-toggle {
+      display: flex;
+      gap: 0.75rem;
+    }
+
+    .status-option {
+      flex: 1;
+      position: relative;
+    }
+
+    .status-option input {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .status-option label {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      padding: 0.85rem 1rem;
+      border: 2px solid var(--border);
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: 500;
+      transition: all 0.2s;
+      text-align: center;
+    }
+
+    .status-option input:checked + label {
+      border-color: var(--turquoise);
+      background: var(--turquoise-light);
+      color: var(--turquoise-dark);
+    }
+
+    .status-option.absage input:checked + label {
+      border-color: var(--coral);
+      background: #FFF3E0;
+      color: var(--coral);
+    }
+
+    /* ── Checkboxen (Tage) ── */
+    .tage-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem;
+    }
+
+    .tag-option {
+      position: relative;
+    }
+
+    .tag-option input {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .tag-option label {
+      display: block;
+      padding: 0.65rem 0.75rem;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: all 0.2s;
+      text-align: center;
+      user-select: none;
+    }
+
+    .tag-option input:checked + label {
+      border-color: var(--turquoise);
+      background: var(--turquoise-light);
+      color: var(--turquoise-dark);
+    }
+
+    .tag-option label:active {
+      transform: scale(0.97);
+    }
+
+    .alle-toggle {
+      margin-bottom: 0.5rem;
+    }
+
+    .alle-toggle label {
+      font-size: 0.85rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: var(--turquoise-dark);
+      font-weight: 500;
+    }
+
+    .alle-toggle input {
+      accent-color: var(--turquoise);
+      width: 16px;
+      height: 16px;
+    }
+
+    /* ── Personen-Zähler ── */
+    .personen-row {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .personen-field {
+      flex: 1;
+      min-width: 120px;
+    }
+
+    /* ── Submit ── */
+    .btn-submit {
+      width: 100%;
+      padding: 1rem;
+      border: none;
+      border-radius: var(--radius-sm);
+      font-family: inherit;
+      font-size: 1.05rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      color: var(--white);
+      background: var(--turquoise);
+      margin-top: 0.5rem;
+    }
+
+    .btn-submit:hover {
+      background: var(--turquoise-dark);
+    }
+
+    .btn-submit:active {
+      transform: scale(0.98);
+    }
+
+    .btn-submit:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .btn-submit.absage-btn {
+      background: var(--coral);
+    }
+
+    .btn-submit.absage-btn:hover {
+      background: #E64A19;
+    }
+
+    /* ── Feedback Messages ── */
+    .msg {
+      padding: 1rem 1.25rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.95rem;
+      display: none;
+      margin-top: 1rem;
+    }
+
+    .msg.success {
+      background: var(--success-bg);
+      color: var(--success);
+      display: block;
+    }
+
+    .msg.error {
+      background: var(--error-bg);
+      color: var(--error);
+      display: block;
+    }
+
+    /* ── Conditional Fields ── */
+    .details-block {
+      transition: opacity 0.3s, max-height 0.3s;
+    }
+
+    .details-block.hidden {
+      display: none;
+    }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center;
+      padding: 2rem 1.25rem;
+      color: var(--text-light);
+      font-size: 0.8rem;
+    }
+
+    /* ── Responsive ── */
+    @media (min-width: 480px) {
+      .hero h1 {
+        font-size: 3rem;
+      }
+      .info-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (min-width: 640px) {
+      .tage-grid {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+    }
+
+    /* ── Loading Spinner ── */
+    .spinner {
+      display: inline-block;
+      width: 18px;
+      height: 18px;
+      border: 2px solid rgba(255,255,255,0.3);
+      border-top-color: var(--white);
+      border-radius: 50%;
+      animation: spin 0.6s linear infinite;
+      vertical-align: middle;
+      margin-right: 0.4rem;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Hero ── -->
+  <header class="hero">
+    <span class="hero-icon" aria-hidden="true">&#9728;&#65039;</span>
+    <h1 id="hero-title">Summer Camp 2026</h1>
+    <p class="subtitle" id="hero-subtitle">Eine Woche mit Freunden</p>
+    <div class="hero-meta">
+      <span>&#128197; <strong id="hero-zeitraum">2. – 9. August 2026</strong></span>
+      <span>&#128205; <span id="hero-location">Wird noch bekannt gegeben</span></span>
+    </div>
+  </header>
+
+  <!-- ── Was erwartet dich ── -->
+  <section>
+    <div class="container">
+      <h2 class="section-title">Was erwartet dich</h2>
+      <p style="color: var(--text-light); margin-bottom: 1.25rem;" id="event-beschreibung">
+        Ein großes Haus, gute Freunde, Pool, Grillen, entspannte Tage — komm vorbei, wann du willst.
+      </p>
+      <div class="info-grid">
+        <div class="info-card">
+          <h3>&#127946; Flexibel</h3>
+          <p>Komm für einen Tag, ein Wochenende oder die ganze Woche. Keine Verpflichtung, kein Stress.</p>
+        </div>
+        <div class="info-card turquoise">
+          <h3>&#127946;&#8205;&#9794;&#65039; Pool & Chill</h3>
+          <p>Pool, Hot Tub, Grillen, Tischtennis — oder einfach mit nem Buch in der Sonne liegen.</p>
+        </div>
+        <div class="info-card">
+          <h3>&#128021; Hunde willkommen</h3>
+          <p>Dein Vierbeiner darf natürlich mit. Kinder sowieso.</p>
+        </div>
+        <div class="info-card turquoise">
+          <h3>&#128187; Remote Work</h3>
+          <p>WLAN ist da. Tagsüber arbeiten, abends zusammen kochen und abhängen.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Location (Platzhalter) ── -->
+  <section id="location-section">
+    <div class="container">
+      <h2 class="section-title">Location</h2>
+      <div class="placeholder-section" id="location-placeholder">
+        <h3>&#127968; Details folgen</h3>
+        <p>Die Location wird bekannt gegeben, sobald die Anmeldungen stehen. Soviel sei verraten: großes Haus, viel Platz, Wasser in der Nähe.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Ablauf (Platzhalter) ── -->
+  <section id="ablauf-section">
+    <div class="container">
+      <h2 class="section-title">Ablauf</h2>
+      <div class="placeholder-section" id="ablauf-placeholder">
+        <h3>&#128203; Programm kommt noch</h3>
+        <p>Es gibt kein festes Programm — aber wir sammeln Ideen für Ausflüge, Abendessen und Aktivitäten. Stay tuned.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Anmeldung ── -->
+  <section class="form-section" id="anmeldung">
+    <div class="container">
+      <h2 class="section-title" style="color: var(--turquoise-dark);">Bist du dabei?</h2>
+
+      <div class="form-card">
+        <form id="summercamp-form" novalidate>
+
+          <!-- Name -->
+          <div class="form-group">
+            <label for="name">Dein Name *</label>
+            <input type="text" id="name" name="name" required placeholder="Max Mustermann" autocomplete="name">
+          </div>
+
+          <!-- E-Mail -->
+          <div class="form-group">
+            <label for="email">E-Mail <span style="font-weight:400;color:var(--text-light)">(optional, für Updates)</span></label>
+            <input type="email" id="email" name="email" placeholder="max@beispiel.de" autocomplete="email">
+          </div>
+
+          <!-- Status Toggle -->
+          <div class="form-group">
+            <label>Was sagst du?</label>
+            <div class="status-toggle">
+              <div class="status-option">
+                <input type="radio" name="status" id="status-zusage" value="Zusage" required>
+                <label for="status-zusage">&#9989; Bin dabei!</label>
+              </div>
+              <div class="status-option absage">
+                <input type="radio" name="status" id="status-absage" value="Absage">
+                <label for="status-absage">&#128532; Leider nicht</label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Details (nur bei Zusage) -->
+          <div class="details-block hidden" id="details-block">
+
+            <!-- Tage -->
+            <div class="form-group">
+              <label>An welchen Tagen bist du da?</label>
+              <div class="alle-toggle">
+                <label><input type="checkbox" id="alle-tage"> Alle Tage</label>
+              </div>
+              <div class="tage-grid" id="tage-grid">
+                <!-- wird dynamisch aus config.js befüllt -->
+              </div>
+            </div>
+
+            <!-- Personen -->
+            <div class="form-group">
+              <label>Wie viele kommt ihr?</label>
+              <div class="personen-row">
+                <div class="personen-field">
+                  <label for="erwachsene" style="font-weight:400;font-size:0.8rem;">Erwachsene</label>
+                  <input type="number" id="erwachsene" name="erwachsene" min="1" max="10" value="1">
+                </div>
+                <div class="personen-field">
+                  <label for="kinder" style="font-weight:400;font-size:0.8rem;">Kinder</label>
+                  <input type="number" id="kinder" name="kinder" min="0" max="10" value="0">
+                </div>
+              </div>
+            </div>
+
+            <!-- Haustiere -->
+            <div class="form-group">
+              <label for="haustiere">Haustiere</label>
+              <select id="haustiere" name="haustiere">
+                <!-- wird dynamisch aus config.js befüllt -->
+              </select>
+            </div>
+          </div>
+
+          <!-- Submit -->
+          <div class="form-group">
+            <button type="submit" class="btn-submit" id="btn-submit" disabled>
+              Bitte wähle Zusage oder Absage
+            </button>
+          </div>
+
+          <!-- Feedback -->
+          <div id="form-msg" class="msg"></div>
+
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Footer ── -->
+  <footer>
+    <p>Summer Camp 2026 — Privates Event</p>
+  </footer>
+
+  <script>
+    (function() {
+      'use strict';
+
+      const config = SUMMERCAMP_CONFIG;
+      const form = document.getElementById('summercamp-form');
+      const detailsBlock = document.getElementById('details-block');
+      const btnSubmit = document.getElementById('btn-submit');
+      const formMsg = document.getElementById('form-msg');
+
+      // ── Config → UI ──
+      function initFromConfig() {
+        // Hero
+        document.getElementById('hero-title').textContent = config.EVENT.titel;
+        document.getElementById('hero-subtitle').textContent = config.EVENT.untertitel;
+        document.getElementById('hero-zeitraum').textContent = config.EVENT.zeitraum;
+        document.getElementById('hero-location').textContent = config.EVENT.location;
+        document.getElementById('event-beschreibung').textContent = config.EVENT.beschreibung;
+
+        // Tage-Slots
+        const grid = document.getElementById('tage-grid');
+        grid.innerHTML = '';
+        config.TAGE.forEach(function(tag) {
+          var div = document.createElement('div');
+          div.className = 'tag-option';
+          div.innerHTML =
+            '<input type="checkbox" id="tag-' + tag.id + '" name="tage" value="' + tag.label + '">' +
+            '<label for="tag-' + tag.id + '">' + tag.label + '</label>';
+          grid.appendChild(div);
+        });
+
+        // Haustiere
+        var select = document.getElementById('haustiere');
+        select.innerHTML = '';
+        config.HAUSTIERE_OPTIONEN.forEach(function(opt) {
+          var option = document.createElement('option');
+          option.value = opt;
+          option.textContent = opt;
+          select.appendChild(option);
+        });
+
+        // Location-Platzhalter befüllen falls Details vorhanden
+        if (config.EVENT.locationDetails) {
+          document.getElementById('location-placeholder').innerHTML =
+            '<p>' + config.EVENT.locationDetails + '</p>';
+        }
+      }
+
+      // ── Status Toggle ──
+      var statusRadios = document.querySelectorAll('input[name="status"]');
+      statusRadios.forEach(function(radio) {
+        radio.addEventListener('change', function() {
+          var isZusage = this.value === 'Zusage';
+          detailsBlock.classList.toggle('hidden', !isZusage);
+
+          if (isZusage) {
+            btnSubmit.textContent = 'Anmeldung absenden';
+            btnSubmit.classList.remove('absage-btn');
+          } else {
+            btnSubmit.textContent = 'Absage senden';
+            btnSubmit.classList.add('absage-btn');
+          }
+          btnSubmit.disabled = false;
+        });
+      });
+
+      // ── Alle Tage Toggle ──
+      document.getElementById('alle-tage').addEventListener('change', function() {
+        var checks = document.querySelectorAll('#tage-grid input[type="checkbox"]');
+        var checked = this.checked;
+        checks.forEach(function(c) { c.checked = checked; });
+      });
+
+      // ── Form Submit ──
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        formMsg.className = 'msg';
+        formMsg.style.display = 'none';
+
+        var name = document.getElementById('name').value.trim();
+        if (!name) {
+          showMsg('Bitte gib deinen Namen ein.', 'error');
+          return;
+        }
+
+        var status = document.querySelector('input[name="status"]:checked');
+        if (!status) {
+          showMsg('Bitte wähle Zusage oder Absage.', 'error');
+          return;
+        }
+
+        var data = {
+          name: name,
+          email: document.getElementById('email').value.trim(),
+          status: status.value
+        };
+
+        if (status.value === 'Zusage') {
+          var tage = [];
+          document.querySelectorAll('#tage-grid input:checked').forEach(function(cb) {
+            tage.push(cb.value);
+          });
+          data.tage = tage;
+          data.erwachsene = document.getElementById('erwachsene').value;
+          data.kinder = document.getElementById('kinder').value;
+          data.haustiere = document.getElementById('haustiere').value;
+
+          if (tage.length === 0) {
+            showMsg('Bitte wähle mindestens einen Tag aus.', 'error');
+            return;
+          }
+        }
+
+        // Submit
+        btnSubmit.disabled = true;
+        btnSubmit.innerHTML = '<span class="spinner"></span> Wird gesendet...';
+
+        if (config.GOOGLE_SCRIPT_URL === 'HIER_GOOGLE_SCRIPT_URL_EINTRAGEN') {
+          // Demo-Modus ohne Backend
+          setTimeout(function() {
+            if (status.value === 'Zusage') {
+              showMsg('Danke, ' + name + '! Deine Anmeldung wurde gespeichert. Wir freuen uns auf dich! &#127881;', 'success');
+            } else {
+              showMsg('Schade, ' + name + '! Vielleicht beim nächsten Mal. Wir halten dich auf dem Laufenden.', 'success');
+            }
+            form.reset();
+            detailsBlock.classList.add('hidden');
+            btnSubmit.textContent = 'Bitte wähle Zusage oder Absage';
+            btnSubmit.disabled = true;
+          }, 800);
+          return;
+        }
+
+        fetch(config.GOOGLE_SCRIPT_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        })
+        .then(function() {
+          if (status.value === 'Zusage') {
+            showMsg('Danke, ' + name + '! Deine Anmeldung wurde gespeichert. Wir freuen uns auf dich! &#127881;', 'success');
+          } else {
+            showMsg('Schade, ' + name + '! Vielleicht beim nächsten Mal. Wir halten dich auf dem Laufenden.', 'success');
+          }
+          form.reset();
+          detailsBlock.classList.add('hidden');
+          btnSubmit.textContent = 'Bitte wähle Zusage oder Absage';
+          btnSubmit.disabled = true;
+        })
+        .catch(function() {
+          showMsg('Etwas ist schiefgelaufen. Bitte versuche es erneut.', 'error');
+          btnSubmit.disabled = false;
+          btnSubmit.textContent = status.value === 'Zusage' ? 'Anmeldung absenden' : 'Absage senden';
+        });
+      });
+
+      function showMsg(text, type) {
+        formMsg.innerHTML = text;
+        formMsg.className = 'msg ' + type;
+        formMsg.style.display = 'block';
+        formMsg.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+
+      // ── Init ──
+      initFromConfig();
+    })();
+  </script>
+</body>
+</html>
