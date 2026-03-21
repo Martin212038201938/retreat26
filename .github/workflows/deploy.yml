@@ -1,0 +1,31 @@
+name: Deploy to alwaysdata
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Deploy via SSH to alwaysdata
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ssh-martin.alwaysdata.net
+          username: martin
+          key: ${{ secrets.ALWAYSDATA_SSH_KEY }}
+          script: |
+            mkdir -p ~/www/summercamp
+            rm -rf ~/www/summercamp/*
+
+      - name: Upload files via SCP
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ssh-martin.alwaysdata.net
+          username: martin
+          key: ${{ secrets.ALWAYSDATA_SSH_KEY }}
+          source: "index.html,config.js"
+          target: "~/www/summercamp/"
